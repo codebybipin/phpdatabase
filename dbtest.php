@@ -10,7 +10,7 @@ if ($connection->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
     exit();
 } else {
-    if ($result = $mysqli->query("SELECT Name FROM City LIMIT 10")) {
+    if ($result = $mysqli->query("SELECT name FROM user LIMIT 10")) {
     printf("Select returned %d rows.\n", $result->num_rows);
 
     /* free result set */
