@@ -12,11 +12,11 @@ if ($connection->connect_errno) {
 } else {
     if ($result = $mysqli->query("SELECT name FROM user LIMIT 10")) {
     printf("Select returned %d rows.\n", $result->num_rows);
-
+    printf("Connected to the database");
     /* free result set */
     $result->close();
 }
-    printf("Connected to the database");
+   printf("Outside of if statement"); 
 }
 $connection->close();
 ?>
