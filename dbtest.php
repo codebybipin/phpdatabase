@@ -2,10 +2,10 @@
 $dbhost = getenv("POSTGRESQL_SERVICE_HOST");
 $dbport = getenv("POSTGRESQL_SERVICE_PORT");
 $dbuser = getenv("POSTGRESQL_USER");
-$dbpwd = getenv("PGPASSWORD");
+$dbpwd = getenv("POSTGRESQL_PASSWORD");
 $dbname = getenv("POSTGRESQL_DATABASE");
 
-$connection = mysql_connect($dbhost.":".$dbport, $dbuser, $dbpwd);
+$connection = mysql_connect($dbhost, $dbuser, $dbpwd);
 if (!$connection) {
   echo "Could not connect to database";
 } else {
