@@ -12,7 +12,7 @@ if (!$connection) {
   echo "Connected to database.<br>";
 }
 $dbconnection = mysql_select_db($dbname);
-$query = "SELECT * from users";
+$query = "SELECT * from noun";
 $rs = mysql_query($query);
 while ($row = mysql_fetch_assoc($rs)) {
   echo $row['id'] . " " . $row['string'] . "\n";
