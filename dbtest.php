@@ -1,22 +1,22 @@
 <?php
-$dbhost = getenv("MYSQL_SERVICE_HOST");
-$dbport = getenv("MYSQL_SERVICE_PORT");
-$dbuser = getenv("MYSQL_USER");
-$dbpwd = getenv("MYSQL_PASSWORD");
-$dbname = getenv("MYSQL_DATABASE");
+$dbhost = getenv("POSTGRESQL_SERVICE_HOST");
+$dbport = getenv("POSTGRESQL_SERVICE_PORT");
+$dbuser = getenv("POSTGRESQL_USER");
+$dbpwd = getenv("PGPASSWORD");
+$dbname = getenv("POSTGRESQL_DATABASE");
 
-$connection = new mysqli($dbhost, $dbuser, $dbpwd, $dbname);
-if ($connection->connect_errno) {
-    printf("Connect failed: %s\n", $mysqli->connect_error);
-    exit();
+$connection = mysql_connect($dbhost.":".$dbport, $dbuser, $dbpwd);
+if (!$connection) {
+  echo "Could not connect to database";
 } else {
-    if ($result = $mysqli->query("SELECT name FROM user LIMIT 10")) {
-    printf("Select returned %d rows.\n", $result->num_rows);
-    printf("Connected to the database");
-    /* free result set */
-    $result->close();
+  echo "Connected to database.<br>";
 }
-   printf("Outside of if statement"); 
+$dbconnection = mysql_select_db($dbname);
+$query = "SELECT * from users";
+$rs = mysql_query($query);
+while ($row = mysql_fetch_assoc($rs)) {
+  echo $row['id'] . " " . $row['string'] . "\n";
 }
-$connection->close();
+mysql_close();
+?>
 ?>
